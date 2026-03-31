@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-gray-800 bg-gray-50 min-h-screen transition-colors duration-300;
+  }
+  .dark body {
+    @apply text-gray-100 bg-gray-900;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg border border-white/40 dark:border-gray-700/30 shadow-xl rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/50 dark:bg-gray-900/50 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 backdrop-blur-sm text-gray-800 dark:text-gray-100 placeholder-gray-400 shadow-sm focus:shadow-md;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 font-semibold py-3 px-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 active:scale-95;
+  }
+}
+
+/* Background gradient for the whole app */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15), transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.15), transparent 40%),
+              radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1), transparent 50%);
+  pointer-events: none;
+}
+
+.dark body::before {
+  background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.2), transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.2), transparent 40%),
+              radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.15), transparent 50%);
+}
